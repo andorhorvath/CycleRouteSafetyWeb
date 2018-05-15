@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import filechooser.components.*;
+import java.applet.Applet;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,17 +18,15 @@ import java.nio.file.Paths;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Main {
+public class Main extends Applet {
 
-    //public static final int MIN_ZOOM = 0;
-    //public static final int MAX_ZOOM = 21;
-    //public static final int ZOOM_VALUE = 10; //map.html value
-    //TODO: delete this public static Route[] allRoutes;
+    
+    
     public static ArrayList<Route> allRoutes;
     public static Color off = Color.lightGray;
     public static Color on = Color.white;
     public static File tempStaticMarkerFileStore = null;
-    public static final double radiusOfClose = 0.01;
+    public static final double RADIUS_OF_CLOSE = 0.01;
     
     public static void main(String[] args) {
 
@@ -138,7 +137,7 @@ public class Main {
                 // when first starting the program, it does not have any route
                 // when loading a route, we need to init the nearPois set
                 map.nearPois.clear();
-                map.nearPois.addAll(map.computeNearPois(radiusOfClose));
+                map.nearPois.addAll(map.computeNearPois(RADIUS_OF_CLOSE));
             } else {
                 DirectionsGeocoder.addText(messageBar, "Nincs mit megnyitni");
                 JOptionPane.showMessageDialog(null, "Nincs mit megnyitni!");
